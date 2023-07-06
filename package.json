@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "build":"cd api && npm install && cd ../app && npm install && npm run build",
-    "start": "npm run start --workspace=api",
+    "start": "cd api && npm run start",
     "dev:api":"npm run build && npm run dev"
   },
   "keywords": [],
