@@ -9,7 +9,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "SKIP_PRELIGHT_CHECK=true npm run start --workspace=api",
+    "start": "npm install && SKIP_PRELIGHT_CHECK=true npm run start --workspace=api",
     "build":"npm run build --workspace=app",
     "dev:api":"npm run build && npm run dev"
   },
