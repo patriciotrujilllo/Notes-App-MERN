@@ -9,8 +9,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build":"npm run build --workspaces=app",
-    "start": "npm run start --workspaces=api",
+    "start": "SKIP_PRELIGHT_CHECK=true npm run start --workspace=api",
+    "build":"npm run build --workspace=app",
     "dev:api":"npm run build && npm run dev"
   },
   "keywords": [],
