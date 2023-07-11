@@ -1,7 +1,7 @@
 import React from 'react'
 import { Togglable } from './Togglable'
 import { useState } from 'react'
-export const RenderNotesForm = ({ addNotes, handleLogoutSubmit }) => {
+export const RenderNotesForm = ({ addNotes }) => {
 	const [newNote, setNewNote] = useState('')
 
 	const handleChange = (event) => {
@@ -34,7 +34,6 @@ export const RenderNotesForm = ({ addNotes, handleLogoutSubmit }) => {
 			</Togglable>
 
 			<div>
-				<button onClick={handleLogoutSubmit}>Logout</button>
 			</div>
 		</>
 	)
