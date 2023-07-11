@@ -1,25 +1,13 @@
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { setToken } from './services/notes'
 import { loginUser } from './services/login'
 import { RenderLoginForm } from './components/RenderLoginForm'
 import { Navigate } from 'react-router-dom'
+import {useUser} from './hooks/useUser'
 
 const Login = () => {
-	const [user, setUser] = useState(null)
-	//const nav = useNavigate()
-
-
-
-	useEffect(() => {
-		const loggedUserJson = window.localStorage.getItem('loggedNoteAppUser')
-		if (loggedUserJson) {
-			const user = JSON.parse(loggedUserJson)
-			setUser(user)
-			setToken(user.Token)
-		}
-	}, [])
-
+	const {user,setUser} = useUser()
 
 	const addUser = async (login) => {
 		try {
@@ -38,12 +26,6 @@ const Login = () => {
 			console.error(error)
 		}
 	}
-
-	// const handleLogoutSubmit = () => {
-	// 	setUser(null)
-	// 	setToken(user.Token)
-	// 	window.localStorage.removeItem('loggedNoteAppUser')
-	// }
 	return (
 		<div>
 			<h2>Login</h2>
