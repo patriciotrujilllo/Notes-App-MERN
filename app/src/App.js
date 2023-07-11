@@ -1,34 +1,19 @@
-import {React, useEffect,useState} from "react"
+import {React} from "react"
 import {Link,BrowserRouter,Route,Routes,Navigate} from 'react-router-dom'
 import Notes from './Notes.js'
 import Login from "./login.js"
-import { getAllNotes } from './services/notes'
 import { SingleNote } from "./components/singleNote.js"
+import { useUser } from "./hooks/useUser.js"
+import { useNotes } from "./hooks/useNotes.js"
 
 const Home = () => <h1>Home</h1>
 const Users = () => <h1>Users</h1>
 
 function App () {
-	const [user, setUser] = useState(null)
-	const [notes, setNotes] = useState(null)
 
-	useEffect(() => {
-		const loggedUserJson = window.localStorage.getItem('loggedNoteAppUser')
-		if (loggedUserJson) {
-			const user = JSON.parse(loggedUserJson)
-			setUser(user)
-		}
-	}, [])
+	const {user} = useUser()
+	const {notes} = useNotes()
 
-	useEffect(() => {
-		getAllNotes()
-			.then(nota => {
-				setNotes(nota)
-			}).catch((error) => {
-				console.error('database error: ', error)
-			})
-	}, [])
-	
 	return (
 		<BrowserRouter>
 			<header>
@@ -42,10 +27,10 @@ function App () {
 					Users
 				</Link>
 				{user ? 
-					<em>Logeado {user.username}</em>
+					<em>{user.username}</em>
 					:
 					<Link to="/login" style={{ padding: "5px" }}>
-					login
+					Login
 					</Link>
 				}
 				
