@@ -1,5 +1,5 @@
-import { Togglable } from './Togglable'
 import { useState } from 'react'
+import {Form, Button} from 'react-bootstrap'
 
 export const RenderLoginForm = ({ addUser }) => {
 	const [username, setUsername] = useState('')
@@ -37,27 +37,31 @@ export const RenderLoginForm = ({ addUser }) => {
 
 			{credenciales && <p style={{ color: 'red' }}>Credenciales incorrectas</p>}
 			<div>
-				<Togglable title='Show login'>
-
-					<form data-test-id='form-login-username' onSubmit={handleLoginSubmit}>
-						<input
+				
+					<Form data-test-id='form-login-username' onSubmit={handleLoginSubmit}>
+						<Form.Group controlId="formBasicEmail">
+							<Form.Control
 							type='text'
 							name='username'
 							placeholder='username'
 							value={username}
 							onChange={handleUsernameChange}
 						/><br />
-						<input
+						</Form.Group>
+
+						<Form.Group controlId="formBasicPassword">
+						<Form.Control
 							type='password'
 							name='password'
 							placeholder='password'
 							value={password}
 							onChange={handlePasswordChange}
 						/><br />
-						<button>Login</button>
-					</form>
-
-				</Togglable>
+						</Form.Group>
+						
+						<Button type='submit'>Login</Button>
+					</Form>
+				
 			</div>
 
 		</div>
