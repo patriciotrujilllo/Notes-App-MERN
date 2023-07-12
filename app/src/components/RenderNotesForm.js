@@ -1,6 +1,6 @@
 import React from 'react'
-import { Togglable } from './Togglable'
 import { useState } from 'react'
+import {Form,Button} from 'react-bootstrap'
 export const RenderNotesForm = ({ addNotes }) => {
 	const [newNote, setNewNote] = useState('')
 
@@ -21,17 +21,13 @@ export const RenderNotesForm = ({ addNotes }) => {
 
 	return (
 		<>
-			<Togglable title='Show notes'>
-
-				<form data-test-id='form-nota' onSubmit={handleSubmit}>
+				<Form data-test-id='form-nota' onSubmit={handleSubmit}>
 					<div>
             Notas:
-						<input type='text' onChange={handleChange} value={newNote} />
+						<Form.Control type='text' onChange={handleChange} value={newNote} />
 					</div>
-					<button>Agregar nota</button>
-				</form>
-
-			</Togglable>
+					<Button type='submit'>Agregar nota</Button>
+				</Form>
 
 			<div>
 			</div>
