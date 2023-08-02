@@ -1,7 +1,6 @@
 import jsonwebtoken from 'jsonwebtoken'
 
 const userExtractor = (request,response, next)=>{
-    console.log('Paso por el console.log del middleware')
     const autorization = request.get('authorization')
 	let token= null
 
