@@ -21,7 +21,7 @@ const Notes = () => {
 
 
 	return (
-		<div>
+		<div className='all-notes'>
 			<h2>Notes</h2>
 			{user? 
 			<RenderNotesForm addNotes={addNotes}/>
