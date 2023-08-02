@@ -23,12 +23,23 @@ export const createNote = (content) => {
 }
 
 export const updateNote = (id, dataupdate) => {
-	return axios(`${url}/${id}`, dataupdate)
+	const config = {
+		headers: {
+			authorization: Token
+		}
+	}
+	return axios.put(`${url}/${id}`, dataupdate,config)
 		.then(res => res.data)
+		.catch(()=>console.error('Fallo en el servicio'))
 }
 
 export const deleteNote = (id) => {
-	return axios.delete(`${url}/${id}`)
+	const config = {
+		headers: {
+			authorization: Token
+		}
+	}
+	return axios.delete(`${url}/${id}`,config)
 		.then(res => res.data)
 }
 
