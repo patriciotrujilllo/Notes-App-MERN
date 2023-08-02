@@ -24,10 +24,10 @@ const Notes = () => {
 		<div className='all-notes'>
 			<h2>Notes</h2>
 			{user? 
-			<RenderNotesForm addNotes={addNotes}/>
-			: "no ha iniciado sesion"}
+				<RenderNotesForm addNotes={addNotes}/>
+				: 'no ha iniciado sesion'}
 
-			<MapNotes notes={notes} />
+			<MapNotes notes={notes} setNotes={setNotes}/>
 			
 		</div>
 	)

@@ -1,5 +1,5 @@
-import { useState,useEffect } from "react"
-import { setToken } from "../services/notes"
+import { useState,useEffect } from 'react'
+import { setToken } from '../services/notes'
 import {Navigate} from 'react-router-dom'
 
 export const useUser = () =>{
@@ -10,7 +10,7 @@ export const useUser = () =>{
 		if (loggedUserJson) {
 			const user = JSON.parse(loggedUserJson)
 			setUser(user)
-            setToken(user.Token)
+			setToken(user.Token)
 		}
 	}, [])
 

@@ -38,18 +38,18 @@ export const RenderLoginForm = ({ addUser }) => {
 			{credenciales && <p style={{ color: 'red' }}>Credenciales incorrectas</p>}
 			<div>
 				
-					<Form data-test-id='form-login-username' onSubmit={handleLoginSubmit}>
-						<Form.Group controlId="formBasicEmail">
-							<Form.Control
+				<Form data-test-id='form-login-username' onSubmit={handleLoginSubmit}>
+					<Form.Group controlId="formBasicEmail">
+						<Form.Control
 							type='text'
 							name='username'
 							placeholder='username'
 							value={username}
 							onChange={handleUsernameChange}
 						/><br />
-						</Form.Group>
+					</Form.Group>
 
-						<Form.Group controlId="formBasicPassword">
+					<Form.Group controlId="formBasicPassword">
 						<Form.Control
 							type='password'
 							name='password'
@@ -57,10 +57,10 @@ export const RenderLoginForm = ({ addUser }) => {
 							value={password}
 							onChange={handlePasswordChange}
 						/><br />
-						</Form.Group>
+					</Form.Group>
 						
-						<Button type='submit'>Login</Button>
-					</Form>
+					<Button type='submit'>Login</Button>
+				</Form>
 				
 			</div>
 

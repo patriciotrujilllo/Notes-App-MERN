@@ -1,10 +1,10 @@
-import { useState,useEffect } from "react"
-import { getAllNotes } from "../services/notes.js"
+import { useState,useEffect } from 'react'
+import { getAllNotes } from '../services/notes.js'
 
 export const useNotes = () =>{
-    const [notes, setNotes] = useState([])
+	const [notes, setNotes] = useState([])
 
-    useEffect(() => {
+	useEffect(() => {
 		getAllNotes()
 			.then(nota => {
 				setNotes(nota)
@@ -12,9 +12,9 @@ export const useNotes = () =>{
 				console.error('database error: ', error)
 			})
 	}, [])
-    return {
-        notes,
+	return {
+		notes,
 		setNotes
-    }
+	}
 
 }

@@ -1,10 +1,10 @@
-import {React,Suspense} from "react"
+import {React,Suspense} from 'react'
 import {BrowserRouter,Route,Routes,Navigate} from 'react-router-dom'
 import Notes from './Notes.js'
-import Login from "./login.js"
-import { SingleNote } from "./components/singleNote.js"
-import { useUser } from "./hooks/useUser.js"
-import { useNotes } from "./hooks/useNotes.js"
+import Login from './login.js'
+import { SingleNote } from './components/singleNote.js'
+import { useUser } from './hooks/useUser.js'
+import { useNotes } from './hooks/useNotes.js'
 import {NavHeader} from './components/NavHeader.js'
 import './Styles.css'
 
@@ -24,23 +24,23 @@ function App () {
 
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
-		<div className="container">
-			<BrowserRouter>
-				<NavHeader/>
-				<Routes>
-					<Route path="/notes/:id" element={<SingleNote notes={notes}/>}/>
-					<Route path="/notes" element={<Notes/>}/>
-					<Route path="/login" 
-					element={user? 
-					<Navigate to='/notes'/>
-					:<Login/>} 
-					/>
-					<Route path="/" element={<Home/>}/>
-				</Routes>
+			<div className="container">
+				<BrowserRouter>
+					<NavHeader/>
+					<Routes>
+						<Route path="/notes/:id" element={<SingleNote notes={notes}/>}/>
+						<Route path="/notes" element={<Notes/>}/>
+						<Route path="/login" 
+							element={user? 
+								<Navigate to='/notes'/>
+								:<Login/>} 
+						/>
+						<Route path="/" element={<Home/>}/>
+					</Routes>
 				
-			</BrowserRouter>
-		</div>
+				</BrowserRouter>
+			</div>
 		</Suspense>
 	)
-	}
+}
 export default App

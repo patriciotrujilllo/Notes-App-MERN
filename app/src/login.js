@@ -31,7 +31,7 @@ const Login = () => {
 			<h2>Login</h2>
 			{user
 				? 
-					<Navigate to="/notes"/>
+				<Navigate to="/notes"/>
 
 				: <RenderLoginForm
 					addUser={addUser}

@@ -21,13 +21,13 @@ export const RenderNotesForm = ({ addNotes }) => {
 
 	return (
 		<>
-				<Form data-test-id='form-nota' onSubmit={handleSubmit}>
-					<div>
+			<Form data-test-id='form-nota' onSubmit={handleSubmit}>
+				<div>
             Notas:
-						<Form.Control type='text' onChange={handleChange} value={newNote} />
-					</div>
-					<Button type='submit'>Agregar nota</Button>
-				</Form>
+					<Form.Control type='text' onChange={handleChange} value={newNote} />
+				</div>
+				<Button type='submit'>Agregar nota</Button>
+			</Form>
 
 			<div>
 			</div>
