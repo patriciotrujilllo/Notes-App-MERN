@@ -1,0 +1,25 @@
+.note-link{
+    text-decoration: none;
+}
+.notes-container{
+    display: grid;
+    border: 1px solid rgb(255, 136, 0);
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.note{
+    border: 1px solid rgb(128, 0, 255);
+    aspect-ratio: 16/9;
+    display: flex;
+    justify-content: space-between;
+}
+.icons-note{
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+}
+.icons-note svg{
+    cursor: pointer;
+}
