@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 import { Note } from './Note'
-import Table from 'react-bootstrap/Table'
+import './styles/mapNotes.css'
+
 
 export const MapNotes = ({ notes }) => {
 	return (
-		<Table striped>
-			<tbody>
+		<div className='notes-container'>
+		
 			{notes.map((note) => (// return implicito
-				<tr key={note.id}>
-					<td><Note note={note} /></td>
-				</tr>
+						<Note key={note.id} note={note} />	
+				
 			))}
-			</tbody>
-		</Table>
+			
+		</div>
 	)
 }
