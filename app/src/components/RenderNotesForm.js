@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import {Form,Button} from 'react-bootstrap'
+
 export const RenderNotesForm = ({ addNotes }) => {
 	const [newNote, setNewNote] = useState('')
 
@@ -24,7 +25,7 @@ export const RenderNotesForm = ({ addNotes }) => {
 			<Form data-test-id='form-nota' onSubmit={handleSubmit}>
 				<div>
             Notas:
-					<Form.Control type='text' onChange={handleChange} value={newNote} />
+					<Form.Control type='text' onChange={handleChange} value={newNote} required/>
 				</div>
 				<Button type='submit'>Agregar nota</Button>
 			</Form>
