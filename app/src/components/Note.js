@@ -44,7 +44,15 @@ export const Note = ({ note,setNotes,notes }) => {
 				</Modal.Header>
 				<Modal.Body>
 					<Form>
-						<Form.Control size="lg" type="text" value={noteContent} onChange={e => setNoteContent(e.target.value)}/>
+						<Form.Control size="lg" as="textarea" rows={3} value={noteContent} onChange={e =>{ 
+							setNoteContent(e.target.value)}}
+						onKeyDown={e => {
+							if (e.key === 'Enter') {
+								e.preventDefault()
+								handleSaveChanges(notes, note)
+							}
+						}}
+						required/>
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>
@@ -58,7 +66,7 @@ export const Note = ({ note,setNotes,notes }) => {
 			</Modal>
 
 			<div className='note'>
-				<Link className='note-link' to={`/notes/${note.id}`}><p>{note.content}</p></Link>
+				<Link className='note-link' to={`/notes/${note.id}`}><p>{note.content}</p>{/* ... */}</Link>
 				<div className='icons-note'>
 					{user ? (
 						<>
