@@ -9,10 +9,20 @@ userRouter.post('/',async (request, response)=>{
 	const {body}= request
 	const {username,name,password,confirmPassword} = body
 
-	if(password!==confirmPassword){
-		return request.status(400).json({error: 'Las contraseñas no coinciden'})
+	if(!username || !password || !confirmPassword){
+		return response.status(400).json({error: 'Required user or password'})
 	}
-    
+
+	if(password!==confirmPassword){
+		return response.status(400).json({error: 'Las contraseñas no coinciden'})
+	}
+
+    const existUser = await User.findOne({username})
+
+	if(existUser){
+		response.status(400).json({error:'el usuario ya existe'})
+	}
+
 	const passwordHash= await bcrypt.hash(password, 10)
 		
 	const newUser = new User({
