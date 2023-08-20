@@ -1,12 +1,17 @@
 import { Router } from 'express'
 import { User } from '../models/User.js'
 import bcrypt from 'bcrypt'
+import jsonwebtoken from 'jsonwebtoken'
 
 const userRouter = Router()
 
 userRouter.post('/',async (request, response)=>{
 	const {body}= request
-	const {username,name,password} = body
+	const {username,name,password,confirmPassword} = body
+
+	if(password!==confirmPassword){
+		return request.status(400).json({error: 'Las contraseñas no coinciden'})
+	}
     
 	const passwordHash= await bcrypt.hash(password, 10)
 		
@@ -16,9 +21,23 @@ userRouter.post('/',async (request, response)=>{
 		passwordHash
 		
 	})
+	
 	try{
 		const savedUser = await newUser.save()
-		response.json(savedUser)
+		const id = savedUser._id.toString()
+
+		const userforToken = {
+			username,
+			id
+		}
+
+		const Token = jsonwebtoken.sign(userforToken,process.env.SECRET)
+		
+		response.json({
+			name:savedUser.name,
+			username:savedUser.username,
+			Token
+		})
 	}catch(error){
 		response.status(422).end()
 	}
