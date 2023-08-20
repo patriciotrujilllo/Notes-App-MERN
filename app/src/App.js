@@ -1,7 +1,7 @@
 import {React,Suspense} from 'react'
 import {BrowserRouter,Route,Routes,Navigate} from 'react-router-dom'
 import Notes from './Notes.js'
-import Login from './login.js'
+import Auth from './Auth.js'
 import { SingleNote } from './components/singleNote.js'
 import { useUser } from './hooks/useUser.js'
 import { useNotes } from './hooks/useNotes.js'
@@ -33,7 +33,7 @@ function App () {
 						<Route path="/login" 
 							element={user? 
 								<Navigate to='/notes'/>
-								:<Login/>} 
+								:<Auth/>} 
 						/>
 						<Route path="/" element={<Home/>}/>
 					</Routes>
