@@ -28,6 +28,7 @@ export const RenderLoginForm = ({ addUser,addNewUser }) => {
 			try{
 				const {message} = await addUser(user)
 				console.log(message)
+				
 			}catch(error){
 				setCredenciales(true)
 			}

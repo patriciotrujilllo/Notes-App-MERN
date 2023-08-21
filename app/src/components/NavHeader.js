@@ -1,10 +1,34 @@
+import { useEffect, useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-import { useUser } from '../hooks/useUser'
+import { Navigate } from 'react-router-dom'
+import { setToken } from '../services/notes'
 
 
 export const NavHeader = () =>{
-	const {user} = useUser()
+	const [user,setUser] = useState(null)
+	const [loading,setLoading] = useState(false)
+	
+	const local = () =>{
+		setLoading(true)
+		const loggedUserJson = window.localStorage.getItem('loggedNoteAppUser')
+		if (loggedUserJson) {
+			const userlocal = JSON.parse(loggedUserJson)
+			setUser(userlocal)
+		}
+		setLoading(false)
+	}
+	useEffect(()=>{
+		local()
+	},[])
+
+	const handleLogoutSubmit = () => {
+		setUser(null)
+		setToken(null)
+		window.localStorage.removeItem('loggedNoteAppUser')
+		return <Navigate to="/" />
+	}
+	
 	return(
 		<Navbar expand="lg" className="bg-body-tertiary">
 			<Container>
@@ -21,7 +45,7 @@ export const NavHeader = () =>{
 
 
 						<Nav.Item>
-							{user ? 
+							{!loading && user ? 
 								<em>{user.username}</em>
 								:
 								<Link className="link" to="/login" style={{ padding: '5px' }}>
@@ -29,7 +53,15 @@ export const NavHeader = () =>{
 								</Link>
 							}
 						</Nav.Item>
+						
+						<Nav.Item>
+							{
+								user?
+									<div className='link' onClick={handleLogoutSubmit}>Logout</div>:
+									''
 							
+							}
+						</Nav.Item>
 							
 							
 					</Nav>

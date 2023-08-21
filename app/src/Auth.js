@@ -12,15 +12,15 @@ const Auth = () => {
 
 	const addUser = async (login) => {
 		try {
-			const user = await loginUser(login)
+			const userlogin = await loginUser(login)
 
-			if (user) {
+			if (userlogin) {
 				window.localStorage.setItem(
-					'loggedNoteAppUser', JSON.stringify(user)
+					'loggedNoteAppUser', JSON.stringify(userlogin)
 				)
-				setToken(user.Token)
+				setToken(userlogin.Token)
 
-				setUser(user)
+				setUser(userlogin)
 			}
 
 		} catch (error) {
@@ -29,15 +29,15 @@ const Auth = () => {
 	}
 	const addNewUser = async (register) => {
 		try {
-			const user = await registerUser(register)
+			const userRegister = await registerUser(register)
 
-			if (user) {
+			if (userRegister) {
 				window.localStorage.setItem(
 					'loggedNoteAppUser', JSON.stringify(user)
 				)
-				setToken(user.Token)
+				setToken(userRegister.Token)
 
-				setUser(user)
+				setUser(userRegister)
 			}
 
 		} catch (error) {
