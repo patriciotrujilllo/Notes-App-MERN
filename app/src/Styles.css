@@ -22,3 +22,9 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0 10px 10px;
 }
+.button-type-action{
+    cursor: pointer;
+}
+.button-type-action:hover{
+    color: rgb(51, 21, 202)
+}
