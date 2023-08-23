@@ -8,6 +8,8 @@ export const RenderLoginForm = ({ addUser,addNewUser }) => {
 	const [credenciales,setCredenciales]=useState(false)
 	const [login,setLogin] = useState(true)
 
+	const auth = login ? 'Login': 'Register'
+
 	const handleUsernameChange = (event) => {
 		setUsername(event.target.value)
 	}
@@ -99,7 +101,7 @@ export const RenderLoginForm = ({ addUser,addNewUser }) => {
 						}
 						
 					</div>
-					<Button type='submit'>Login</Button>
+					<Button type='submit'>{auth}</Button>
 				</Form>
 				
 			</div>
