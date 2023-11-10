@@ -14,11 +14,16 @@ Este proyecto fue creado con el stack MERN (MongoDB, Express, React y Node.js). 
 
 ## Backend
 
-Los endpoints de los usuarios, notas y login se refactorizaron en rutas (middleware). Cada una de estas rutas tiene que pasar por la libreria cors.
+El Backend se realizo utilizando Node.js en conjunto con Express
 
-Al crear un usuario, la contraseña es encriptada con bcrypt y guardada en la base de datos de MongoDB. También se creó un middleware intermedio que se encarga de autenticar el token. La conexión a la base de datos utiliza variables de entorno.
-
-El código está formateado con una configuración de ESLint.
+- Rutas: Los endpoints de los usuarios, notas y login se refactorizaron en rutas (middleware). Cada una de estas rutas tiene que pasar por la libreria cors.
+- Encriptado: Al crear un usuario, la contraseña es encriptada con bcrypt
+- Token: Al crear el usuario tambien se crea un token para ese usuario que es retornado en el cuerpo de la repuesta.
+- Base de datos: Los datos tanto del usuario como las notas fueron guardadas en MongoDB
+- Autentificacion: se autentifica que las credenciales usadas esten e las base de datos
+- Autorizacion: Para las acciones de crear, actualizar y eliminar se comprueba que se reciba un token que pueda ser decifrado con la clave interna, si no cumple la condicion quiere decir que no esta autorizado para realizar tal accion.
+- Formatter: El código está formateado con una configuración de ESLint.
+- Test unitarios: se realizaron test unitarios a los usuarios, notas y login
 
 ## Frontend 
 
@@ -34,7 +39,7 @@ En el frontend, el proyecto está hecho con React y se Bootstrap para estilar.
 
 ## Requisitos previos
 
-Antes de instalar y utilizar este proyecto, asegúrate de tener instalado PostgreSQL en tu equipo. También deberás crear la base de datos y las tablas necesarias para el proyecto.
+Antes de instalar y utilizar este proyecto, tiene que tener en cuenta que debe tener una cuenta en mongoDB para utilizar sus proprias varibles de entorno, si no dispone de uno podra probar la funcionalidad del codigo en el link de despliegue.
 
 ## Instalacíon
 
@@ -43,21 +48,25 @@ Para instalar este proyecto en tu equipo local, sigue estos pasos:
 2. Navega hasta el directorio del proyecto y ejecuta `npm install` para instalar todas las dependencias, esto debe realizarse tanto en la carpeta de app y Api.
 3. Crea un archivo `.env` en el directorio de la Api y app del proyecto y agrega tus variables de entorno.
     - Las variables de entorno de la Api son:
-        - PORTAPI
-        - user
-        - password
-        - host
-        - port
-        - database
-        - Secret
-    - La varible de entorno de la app es:
-        - REACT_APP_URL
-4. Crea una base de datos en POSGRES donde se tenga usuarios y notas(esta configuracion ya esta en el archivo DB.sql de la raiz del proyecto), donde una nota solo puede tener un usuario pero un usuario puede tener varias notas (relación n:1)
+      
+        - PORTDEVELOPMENT , puerto del servidor para desarrollo/produccion
+        - PORTTEST , puerto del servidor para testeo
+        - SECRET ,  clave para decifrar los token recibidos por cabecera
+        - MONGO_DB_URI , conexion a mongoDB
+        - MONGO_DB_URI_TEST , conexion a mongoDB para los test
+
+4. Crea una cuenta en mongoDB y agrega las correspondientes variables de entorno.
 5. Ejecuta `npm run api` para iniciar el servidor y luego se procede a iniciar la aplicacion con `npm run app`.
     
 ## Uso 
 
 Para utilizar este proyecto, sigue estos pasos:
-1. Abre tu navegador web y navega hasta http://localhost:3000.
-2. Crea una cuenta o inicia sesión con una cuenta existente.
-3. Una vez que hayas iniciado sesión, podrás crear, leer, actualizar y eliminar notas.
+1. Abre tu navegador web y navega hasta http://localhost:3000, donde podras ver todas las notas que han agregados los usuarios mas no interactuar con ellas.
+2. Crea una cuenta de usuario en mongoDB o envia una petición Post a: http://localhost:3001/api/users/ con la estrucuta json: {
+    "username":"",
+	"name": "",
+	"password": "",
+    "confirmPassword": ""
+}
+, en cambio si vas a probar la pagina web del proyecto utliza las siguientes credenciales usuario:admin123 , contraseña: admin123.
+4. Una vez que hayas iniciado sesión, podrás crear, actualizar y eliminar notas.
