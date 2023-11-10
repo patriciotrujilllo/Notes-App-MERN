@@ -56,17 +56,19 @@ Para instalar este proyecto en tu equipo local, sigue estos pasos:
         - MONGO_DB_URI_TEST , conexion a mongoDB para los test
 
 4. Crea una cuenta en mongoDB y agrega las correspondientes variables de entorno.
-5. Ejecuta `npm run api` para iniciar el servidor y luego se procede a iniciar la aplicacion con `npm run app`.
+5. Ejecuta `npm run build` para instalar todas las dependecias, luego se procede a iniciar la app y el servidor con `npm run start`.
     
 ## Uso 
 
 Para utilizar este proyecto, sigue estos pasos:
 1. Abre tu navegador web y navega hasta http://localhost:3000, donde podras ver todas las notas que han agregados los usuarios mas no interactuar con ellas.
-2. Crea una cuenta de usuario en mongoDB o envia una petición Post a: http://localhost:3001/api/users/ con la estrucuta json: {
-    "username":"",
+2. Crea una cuenta de usuario en mongoDB o envia una petición Post a: http://localhost:3001/api/users/ con la estrucuta json:
+   {
+    	"username":"",
 	"name": "",
 	"password": "",
-    "confirmPassword": ""
-}
+    	"confirmPassword": ""
+   }
+4. Tambien puedes visitar la pagina: 
 , en cambio si vas a probar la pagina web del proyecto utliza las siguientes credenciales usuario:admin123 , contraseña: admin123.
-4. Una vez que hayas iniciado sesión, podrás crear, actualizar y eliminar notas.
+5. Una vez que hayas iniciado sesión, podrás crear, actualizar y eliminar notas.
