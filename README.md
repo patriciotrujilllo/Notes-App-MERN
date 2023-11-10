@@ -1,4 +1,4 @@
-# CRUD  de Notas 
+# CRUD  de Notas MERN
 
 Este es un proyecto CRUD (Crear, Leer, Actualizar, Eliminar) de notas, donde las notas están disponibles para todos los usuarios para vizualizacion y para modificar o eliminar se debe iniciar sesión. Los usuarios iniciar sesión, y todas las peticiones se hacen con la autorización por cabecera de JSON Web Token (JWT)
 
