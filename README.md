@@ -72,3 +72,4 @@ Para utilizar este proyecto, sigue estos pasos:
 4. Tambien puedes visitar la pagina: 
 , en cambio si vas a probar la pagina web del proyecto utliza las siguientes credenciales usuario:admin123 , contraseña: admin123.
 5. Una vez que hayas iniciado sesión, podrás crear, actualizar y eliminar notas.
+6. El proyecto fue desplegado en: [Notes-app](https://notes-user.onrender.com).
